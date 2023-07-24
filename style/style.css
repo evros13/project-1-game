@@ -1,28 +1,35 @@
 body {
-    margin: 20px 0;
+    margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#startScreen {
+/* #startScreen {
     background-color: black;
-}
+} */
 
 
 #gameScreen {
-    background-image: url("notfinalbackground.jpg");
+    background-image: url("/images/notfinalbackground.jpg");
     height: 520px;
     width: 620px;
+    margin: 20px 0;
     border: solid 2px black;
+    position: relative;
 }
 
 
 #player {
-    background-image: url("notfinalplayer.jpg");
-    height: 55px;
-    width: 45px;
+    background-image: url("/images/notfinalplayeredited.png");
+    height: 80px;
+    width: 60px;
+    background-size: contain;
+    background-repeat: no-repeat;   
+    position: absolute;
+    bottom: 0;
+    left: 45%; 
     
 }
 
