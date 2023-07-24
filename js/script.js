@@ -1,13 +1,9 @@
 console.log("Testing script.js")
 
 
-//(backlog) WHEN LOADING THE PAGE = STARTSCREEN 
-// WHEN LOADING THE PAGE - GAMESCREEN
 
-// When game starts, timeout of 3 seconds before "enemies" start falling down (backlog) and timeout of 7 seconds before "rewards" start falling down
-
-// Player is in the middle and moves from there when pressing down keys
-
+window.onload = function() {
+    
 const gameScreen = document.getElementById("gameScreen");
 
 const newGame = new Game()
@@ -15,6 +11,45 @@ const newPlayer = newGame.player
 document.addEventListener("keydown", function(event) {
     newPlayer.playerMoves(event.key);
 })
-console.log(newPlayer.playerElement.style.position);
+
+setTimeout(() => setInterval(createObstacle, 3000), 3000);
+
+setInterval(obstacleMoves, 20);
+
+
+
+function gameLoop() {
+
+    if (gameIsOver) {
+        // add some sort of GAME OVER thing.
+    }
+
+    else {
+        hitByObstacle() //WE NEED TO ADD FUNCTION 
+
+        requestAnimationFrame(gameLoop); //NOT SURE IF I HAVE TO DO ANYTHING ELSE HERE
+    }
+}
+
+function createObstacle() {
+    const obstacle = document.createElement("div");
+    gameScreen.appendChild(obstacle);
+    obstacle.className = "obstacle";
+    obstacle.style.top = 0;
+    obstacle.style.left = (Math.random() * newGame.gameScreen.offsetWidth) + "px"; 
+    newGame.obstaclesArray.push(obstacle);
+}
+
+function obstacleMoves() {
+
+    for (let i = 0; i < newGame.obstaclesArray.length; i++) {
+        let currentPosition = parseInt(newGame.obstaclesArray[i].style.top);
+        newGame.obstaclesArray[i].style.top = (currentPosition + 1) + "px";
+    } 
+
+    }
+
+}
+
 
 

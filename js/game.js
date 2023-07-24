@@ -5,7 +5,7 @@ class Game {
         this.startScreen = document.getElementById("startScreen");
         this.gameScreen = document.getElementById("gameScreen");
         this.player = new Player(this.gameScreen);
-        this.obstacles = [];
+        this.obstaclesArray = [];
         // this.rewards =[];
         this.score = 0;
         this.lives = 5;
@@ -18,6 +18,8 @@ class Game {
         this.player.playerMoves();
     }
 
+
+    
     
 
     // startGame() {

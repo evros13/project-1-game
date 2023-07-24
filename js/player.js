@@ -3,7 +3,6 @@ console.log("Testing player.js")
 class Player {
     constructor(gameScreen) {
         this.gameScreen = gameScreen;
-        // this.directionX = 0;
         this.playerElement = document.getElementById("player");
         this.playerPosition = this.gameScreen.offsetWidth / 2;
     }
@@ -33,8 +32,6 @@ class Player {
             this.updatePosition();
         }
         
-
-        // ADD RULE HERE - set boundaries
         // facing here
 
 
@@ -45,7 +42,7 @@ class Player {
     }
 
     // hitByObstacle(obstacle) {
-    //     const playerHitBox = this.element.getBoundingClientRect();
+    //     const playerHitBox = this.playerElement.getBoundingClientRect();
     //     const obstacleHitBox = obstacle.element.getBoundingClientRect();
 
     //     if (
