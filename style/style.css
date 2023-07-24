@@ -21,6 +21,29 @@ body {
 }
 
 
+
+#scoreCounter {
+    background-color: white;
+    height: 20px;
+    width: 60px;
+    border: 1px solid navy;
+    position: absolute;
+    right: 0;
+}
+
+#livesCounter {
+    background-color: bisque;
+    height: 20px;
+    width: 60px;
+    border: 1px solid navy;
+    position: absolute;
+    right: 0;
+    top: 21px;
+    
+}
+
+
+
 #player {
     background-image: url("/images/notfinalplayeredited.png");
     height: 80px;
@@ -29,7 +52,8 @@ body {
     background-repeat: no-repeat;   
     position: absolute;
     bottom: 0;
-    left: 45%; 
+    left: 300px;
+    transform: translateX(-50%); 
     
 }
 
