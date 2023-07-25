@@ -9,10 +9,6 @@ body {
 
 }
 
-/* #startScreen {
-    background-color: black;
-} */
-
 
 #gameScreen {
     background-image: url("/images/notfinalbackground.jpg");
@@ -75,16 +71,19 @@ body {
 }
 
 .obstacle {
-    background-color: rgb(165, 22, 120);
+    background-image: url("/images/notfinalobstacle.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     height: 30px;
     width: 30px;
-    border-radius: 50%;
     position: absolute;
 }
 
 
 .reward{
-    background-color: rgb(132, 200, 229);
+    background-image: url("/images/notfinalreward.png");
+    background-size: contain;
+    background-repeat: no-repeat;
     height: 30px;
     width: 30px;
     position: absolute;

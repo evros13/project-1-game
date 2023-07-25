@@ -41,20 +41,20 @@ class Player {
         this.playerElement.style.left = this.playerPosition + "px";
     }
 
-    hitByObstacle(obstacle) {
-        const playerHitBox = this.playerElement.getBoundingClientRect();
-        const obstacleHitBox = obstacle.element.getBoundingClientRect();
+    // hitByObstacle(obstacle) {
+    //     const playerHitBox = this.playerElement.getBoundingClientRect();
+    //     const obstacleHitBox = obstacle.element.getBoundingClientRect();
 
-        if (
-            playerHitBox.left < obstacleHitBox.right &&
-            playerHitBox.right > obstacleHitBox.left &&
-            playerHitBox.top < obstacleHitBox.bottom &&
-            playerHitBox.bottom > obstacleHitBox.top
-        ) {
-            console.log("has been hit")
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     if (
+    //         playerHitBox.left < obstacleHitBox.right &&
+    //         playerHitBox.right > obstacleHitBox.left &&
+    //         playerHitBox.top < obstacleHitBox.bottom &&
+    //         playerHitBox.bottom > obstacleHitBox.top
+    //     ) {
+    //         console.log("has been hit")
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 }
