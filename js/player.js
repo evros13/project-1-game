@@ -8,6 +8,7 @@ class Player {
     }
 
     playerMoves(key) {
+        
         if (this.playerElement.offsetLeft + this.playerElement.offsetWidth  > this.gameScreen.offsetWidth - this.gameScreen.style.width) {
            this.playerPosition = this.gameScreen.offsetWidth - this.playerElement.offsetWidth
         }
@@ -15,21 +16,20 @@ class Player {
         else if (this.playerPosition < this.playerElement.offsetWidth) {
             this.playerPosition = this.playerElement.offsetWidth;
         }
-
-
-            console.log("playeroffset")
             this.updatePosition();
 
 
         if (key === "ArrowLeft") {
-            console.log(this.playerElement.offsetLeft)
             
             this.playerPosition -= 10;
+            this.playerElement.style.backgroundImage = 'url("./images/notfinalplayeredited.png")'
             this.updatePosition();
         }
         else if (key === "ArrowRight") {
             this.playerPosition += 10;
+            this.playerElement.style.backgroundImage = 'url("./images/notfinalplayereditedright.png")'
             this.updatePosition();
+
         }
         
         // facing here
@@ -41,19 +41,20 @@ class Player {
         this.playerElement.style.left = this.playerPosition + "px";
     }
 
-    // hitByObstacle(obstacle) {
-    //     const playerHitBox = this.playerElement.getBoundingClientRect();
-    //     const obstacleHitBox = obstacle.element.getBoundingClientRect();
+    hitByObstacle(obstacle) {
+        const playerHitBox = this.playerElement.getBoundingClientRect();
+        const obstacleHitBox = obstacle.element.getBoundingClientRect();
 
-    //     if (
-    //         playerHitBox.left < obstacleHitBox.right &&
-    //         playerHitBox.right > obstacleHitBox.left &&
-    //         playerHitBox.top < obstacleHitBox.bottom &&
-    //         playerHitBox.bottom > obstacleHitBox.top
-    //     ) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
+        if (
+            playerHitBox.left < obstacleHitBox.right &&
+            playerHitBox.right > obstacleHitBox.left &&
+            playerHitBox.top < obstacleHitBox.bottom &&
+            playerHitBox.bottom > obstacleHitBox.top
+        ) {
+            console.log("has been hit")
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

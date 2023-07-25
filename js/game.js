@@ -6,10 +6,10 @@ class Game {
         this.gameScreen = document.getElementById("gameScreen");
         this.player = new Player(this.gameScreen);
         this.obstaclesArray = [];
-        // this.rewards =[];
+        this.rewardsArray =[];
+        this.gameIsOver = false;
         this.score = 0;
         this.lives = 5;
-        this.gameIsOver = false;
 
     }
 

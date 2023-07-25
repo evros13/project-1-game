@@ -4,6 +4,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Victor Mono', monospace;
+
 }
 
 /* #startScreen {
@@ -23,20 +26,30 @@ body {
 
 
 #scoreCounter {
-    background-color: white;
-    height: 20px;
-    width: 60px;
-    border: 1px solid navy;
+    background-image: url("/images/score-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 2px solid black;
+    height: 30px;
+    width: 85px;
     position: absolute;
-    right: 0;
+    padding: 5px;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    font-weight: bolder;
+    text-align: right;
+
 }
+
+
 
 #livesCounter {
     height: 20px;
     width: auto;
     position: absolute;
     right: 10px;
-    top: 40px;
+    top: 55px;
     flex-direction: row;
     
 }
@@ -52,13 +65,13 @@ body {
     background-image: url("/images/notfinalplayeredited.png");
     height: 80px;
     width: 60px;
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;   
     position: absolute;
     bottom: 0;
     left: 300px;
     transform: translateX(-50%); 
-    
+
 }
 
 .obstacle {
@@ -69,3 +82,10 @@ body {
     position: absolute;
 }
 
+
+.reward{
+    background-color: rgb(132, 200, 229);
+    height: 30px;
+    width: 30px;
+    position: absolute;
+}
