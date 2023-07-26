@@ -2,43 +2,51 @@
 window.onload = function () {
 
     const gameScreen = document.getElementById("gameScreen");
-    // const startButton = document.getElementById("startButton");
-    const newGame = new Game();
+    const newGame = new Game()
     const newPlayer = newGame.player;
 
-    
 
-    // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
-    setTimeout(() => setInterval(createObstacle, 3000), 350);
-    setTimeout(() => setInterval(createReward, 5000), 10000);
-    setInterval(moveObstacle, 20);
-    setInterval(moveReward, 20);
+    function startGame() {
 
-    
-    scoreCounterFunction(newGame); // Call the scoreCounterFunction to update the game score
+        gameLoop();
+        // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
+        setTimeout(() => setInterval(createObstacle, 3000), 350);
+        setTimeout(() => setInterval(createReward, 5000), 10000);
+        setInterval(moveObstacle, 20);
+        setInterval(moveReward, 20);
+        scoreCounterFunction(newGame); // Call the scoreCounterFunction to update the game score
+    }
 
-    
+
+
+    const startButton = document.getElementById("startButton")
+    startButton.addEventListener("click", function () {
+        startGame()
+        startButton.style.display = "none";
+        console.log("CLICKING")
+
+    })
+
+
+    document.addEventListener("keydown", function (event) { // This eventListener links the keyboard to the code
+        newPlayer.playerMoves(event.key);
+    });
+
+
     function gameLoop() { // Function used to run the game loop
         frames++;
 
-        hitByObstacle(); // Check for collisions player-obstacle
-        
-        hitByReward(); // Check for collisions player-reward
+            hitByObstacle(); // Check for collisions player-obstacle
 
-        
-        requestAnimationFrame(gameLoop); // Request the next animation frame to continue the game loop
+            hitByReward(); // Check for collisions player-reward
 
-        // if (gameIsOver) {
-        //     // add some sort of GAME OVER thing.
-        // }
+            requestAnimationFrame(gameLoop); // Request the next animation frame to continue the game loop
 
-        // else {
-        //          requestAnimationFrame(gameLoop); //NOT SURE IF I HAVE TO DO ANYTHING ELSE HERE
-        // }
+            newGame.checkGameIsOver();
+
     }
 
-    // Start the game loop
-    gameLoop();
+
 
     // Update the score counter at regular intervals
     function scoreCounterFunction(newGame) {
@@ -50,15 +58,8 @@ window.onload = function () {
     }
 
 
+    // Functions to create and move obstacles
 
-
-    // This eventListener links the keyboard to the code
-    document.addEventListener("keydown", function (event) {
-        newPlayer.playerMoves(event.key);
-    });
-
-
-    // Create a new obstacle element and add it to the game screen
     function createObstacle() {
         const obstacle = document.createElement("div");
         gameScreen.appendChild(obstacle);
@@ -68,7 +69,7 @@ window.onload = function () {
         newGame.obstaclesArray.push(obstacle);
     }
 
-    // Move obstacles top->bottom and remove them when they reach the end of the screen vertically
+
     function moveObstacle() {
         for (let i = 0; i < newGame.obstaclesArray.length; i++) {
             let currentPositionObstacle = parseInt(newGame.obstaclesArray[i].style.top);
@@ -81,7 +82,9 @@ window.onload = function () {
         }
     }
 
-    // Create a new reward element and add it to the game screen
+
+    // Functions to create and move rewards
+
     function createReward() {
         const reward = document.createElement("div");
         gameScreen.appendChild(reward);
@@ -91,7 +94,7 @@ window.onload = function () {
         newGame.rewardsArray.push(reward);
     }
 
-    // Move rewards top->bottom and remove them when they reach the end of the screen vertically
+
     function moveReward() {
         for (let i = 0; i < newGame.rewardsArray.length; i++) {
             let currentPositionReward = parseInt(newGame.rewardsArray[i].style.top);
@@ -109,7 +112,6 @@ window.onload = function () {
         newGame.obstaclesArray.forEach((obstacle) => {
             const playerPosition = newPlayer.playerElement.getBoundingClientRect();
             const obstaclePosition = obstacle.getBoundingClientRect();
-            const liveHearts = document.getElementById("lives"); // NOT IN USE
 
             if (
                 playerPosition.left < obstaclePosition.left + obstaclePosition.width &&
@@ -120,13 +122,18 @@ window.onload = function () {
                 obstacle.remove();
                 newGame.lives -= 1;
                 console.log("HIT BY OBSTACLE")
+
             }
+
+            if(newGame.lives === 0) {
+                newGame.gameIsOver = true;
+            }
+
+            
+
         });
 
-        // IF PLAYER GETS HIT 
-        // lives -= 1;
-        // const liveHearts = document.getElementsByClassName("lives");
-        // liveHearts.remove()
+
     }
 
 
@@ -135,7 +142,7 @@ window.onload = function () {
         newGame.rewardsArray.forEach((reward) => {
             const playerPosition = newPlayer.playerElement.getBoundingClientRect();
             const rewardPosition = reward.getBoundingClientRect();
-            
+
             if (
                 playerPosition.left < rewardPosition.left + rewardPosition.width &&
                 playerPosition.left + playerPosition.width > rewardPosition.left &&
@@ -147,7 +154,7 @@ window.onload = function () {
                 console.log("HIT BY REWARD")
             }
 
-            
+
         });
 
     }

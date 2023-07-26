@@ -7,8 +7,25 @@ body {
     font-family: 'Nunito', sans-serif;
     font-family: 'Victor Mono', monospace;
 
+    /* font-family: 'Special Elite', cursive; */
+
 }
 
+#startButton {
+    background-image: url("/images/score-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 2px solid black;
+    border-radius: 10px;
+    height: 100px;
+    width: 190px;
+    position: relative;
+    top: 41%;
+    left: 37%;
+    font-size: 40px;
+    font-family: 'Special Elite', cursive;
+    display: block;
+}
 
 #gameScreen {
     background-image: url("/images/notfinalbackground.jpg");
@@ -17,6 +34,20 @@ body {
     margin: 20px 0;
     border: solid 2px black;
     position: relative;
+    display: block;
+}
+
+#gameOverScreen {
+    background-image: url("/images/notfinalgameover.jpg");
+    height: 520px;
+    width: 620px;
+    margin: 20px 0;
+    border: solid 2px black;
+    position: relative;
+    background-image: contain;
+    background-repeat: no-repeat;
+    background-color: black;
+    display: none;
 }
 
 
@@ -35,6 +66,7 @@ body {
     font-size: 20px;
     font-weight: bolder;
     text-align: right;
+    border-radius: 8px;
 
 }
 
@@ -47,7 +79,7 @@ body {
     right: 10px;
     top: 55px;
     flex-direction: row;
-    
+
 }
 
 .lives {
@@ -62,11 +94,11 @@ body {
     height: 80px;
     width: 60px;
     background-size: cover;
-    background-repeat: no-repeat;   
+    background-repeat: no-repeat;
     position: absolute;
     bottom: 0;
     left: 300px;
-    transform: translateX(-50%); 
+    transform: translateX(-50%);
 
 }
 
@@ -80,7 +112,7 @@ body {
 }
 
 
-.reward{
+.reward {
     background-image: url("/images/notfinalreward.png");
     background-size: contain;
     background-repeat: no-repeat;
