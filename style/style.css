@@ -7,9 +7,8 @@ body {
     font-family: 'Nunito', sans-serif;
     font-family: 'Victor Mono', monospace;
 
-    /* font-family: 'Special Elite', cursive; */
-
 }
+
 
 #startButton {
     background-image: url("/images/score-background.jpg");
@@ -27,6 +26,14 @@ body {
     display: block;
 }
 
+#startButton:hover {
+    background-image: url("/images/logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: hsla(0, 0%, 100%, 0)
+}
+
+
 #gameScreen {
     background-image: url("/images/background.jpg");
     height: 520px;
@@ -35,7 +42,9 @@ body {
     border: solid 2px black;
     position: relative;
     display: block;
+    border-radius: 12px;
 }
+
 
 #gameOverScreen {
     background-image: url("/images/gameover.gif");
@@ -49,6 +58,7 @@ body {
     background-repeat: no-repeat;
     /* background-color: black; */
     display: none;
+    border-radius: 20px;
 }
 
 
@@ -65,7 +75,7 @@ body {
     left: 35%;
     font-size: 40px;
     font-family: 'Special Elite', cursive;
-    display: block;
+    display: none;
 }
 
 
@@ -84,9 +94,9 @@ body {
     font-weight: bolder;
     text-align: right;
     border-radius: 8px;
+    display: none;
 
 }
-
 
 
 #livesCounter {
@@ -97,6 +107,7 @@ body {
     top: 55px;
 
 }
+
 
 .lives {
     height: 30px;
@@ -109,7 +120,6 @@ body {
 }
 
 
-
 #player {
     background-image: url("/images/playereditedleft.png");
     height: 70px;
@@ -120,8 +130,10 @@ body {
     bottom: 0;
     left: 300px;
     transform: translateX(-50%);
+    display: none;
 
 }
+
 
 .obstacle {
     background-image: url("/images/obstacleedited.png");
@@ -142,11 +154,22 @@ body {
     position: absolute;
 }
 
+
 .obstacleZeroLives {
     background-image: url("/images/finalobstacleedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 50px;
     width: 50px;
+    position: absolute;
+}
+
+
+.rewardLife {
+    background-image: url("/images/michaelsantaedited.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 55px;
+    width: 55px;
     position: absolute;
 }

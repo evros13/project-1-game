@@ -4,69 +4,76 @@ window.onload = function () {
     const gameScreen = document.getElementById("gameScreen");
     const newGame = new Game()
     const newPlayer = newGame.player;
+    let timeCounter = 0;
 
 
     function startGame() {
 
         gameLoop(); // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
+
         setTimeout(() => setInterval(createObstacle, 3000), 350);
         setTimeout(() => setInterval(createReward, 5000), 10000);
         setTimeout(() => setInterval(createObstacleZeroLives, 7000), 15000);
+        setTimeout(() => setInterval(createRewardLife, 8000), 15000);
         setInterval(moveObstacle, 20);
         setInterval(moveReward, 20);
         setInterval(moveObstacleZeroLives, 20);
+        setInterval(moveRewardLife, 20);
         scoreCounterFunction(newGame); // Call the scoreCounterFunction to update the game score
+        createTimeCounter();
+        
     }
 
-
-
-    const startButton = document.getElementById("startButton")
-    startButton.addEventListener("click", function () { // Game will start only after pressing the startButton
-        startGame()
-        startButton.style.display = "none";
-        console.log("Starting Game...")
-        
-    })
-    
-    const restartButton = document.getElementById("restartButton")
-    restartButton.addEventListener("click", function () { // Game will restart
-        window.location.reload();
-        console.log("Restarting game...")
-        
-    })
-    
-    
-    document.addEventListener("keydown", function (event) { // This eventListener links the keyboard to the code
-        newPlayer.playerMoves(event.key);
-    });
-    
-    
-    function gameLoop() { // Function used to run the game loop
-        frames++;
-        
-        newGame.updateLifeCounter();
-        
-        hitByObstacle(); // Check for collisions player-obstacle
-
-        hitByObstacleZeroLives();
-
-        hitByReward(); // Check for collisions player-reward
-
-        requestAnimationFrame(gameLoop); // Request the next animation frame to continue the game loop
-
-        newGame.checkGameIsOver();
-
+    function createTimeCounter() {
+        setInterval(() => {
+            newGame.timeCounter += 1;
+        }, 1000);
     }
-
-
 
     // Update the score counter at regular intervals
     function scoreCounterFunction(newGame) {
         const scoreCounter = document.getElementById("scoreCounter");
         setInterval(() => {
             scoreCounter.innerHTML = newGame.score++;
-            console.log(newGame.score);
         }, 700);
+    }
+
+    const startButton = document.getElementById("startButton")
+    startButton.addEventListener("click", function () { // Game will when pressing the startButton
+        startGame()
+        startButton.style.display = "none";
+        player.style.display = "block";
+        scoreCounter.style.display = "block";
+    })
+
+    const restartButton = document.getElementById("restartButton")
+    restartButton.addEventListener("click", function () { // Game will restart
+        window.location.reload();
+    })
+
+
+    document.addEventListener("keydown", function (event) { // Links the keyboard to the code
+        newPlayer.playerMoves(event.key);
+    });
+
+
+    function gameLoop() { // Function used to run the game loop
+        frames++;
+
+        newGame.updateLifeCounter();
+
+        hitByObstacle();
+
+        hitByObstacleZeroLives();
+
+        hitByReward();
+
+        hitByRewardLife();
+
+        requestAnimationFrame(gameLoop); // Request the next animation frame to continue the game loop
+
+        newGame.checkGameIsOver();
+
     }
 
 
@@ -86,6 +93,18 @@ window.onload = function () {
         for (let i = 0; i < newGame.obstaclesArray.length; i++) {
             let currentPositionObstacle = parseInt(newGame.obstaclesArray[i].style.top);
             newGame.obstaclesArray[i].style.top = (currentPositionObstacle + 1) + "px";
+
+            if (newGame.timeCounter >= 11 && newGame.timeCounter <= 25) {
+                newGame.obstaclesArray[i].style.top = (currentPositionObstacle + 2) + "px";
+            }
+
+            else if (newGame.timeCounter >= 26 && newGame.timeCounter <= 40) {
+                newGame.obstaclesArray[i].style.top = (currentPositionObstacle + 3) + "px";
+            }
+
+            else if (newGame.timeCounter >= 41) {
+                newGame.obstaclesArray[i].style.top = (currentPositionObstacle + 4) + "px";
+            }
 
             if (newGame.obstaclesArray[i].offsetTop >= 495) {
                 newGame.obstaclesArray[i].remove();
@@ -109,15 +128,11 @@ window.onload = function () {
             ) {
                 obstacle.remove();
                 newGame.lives -= 1;
-                console.log("HIT BY OBSTACLE")
-
             }
 
             if (newGame.lives === 0) {
                 newGame.gameIsOver = true;
             }
-
-
 
         });
 
@@ -140,6 +155,18 @@ window.onload = function () {
             let currentPositionReward = parseInt(newGame.rewardsArray[i].style.top);
             newGame.rewardsArray[i].style.top = (currentPositionReward + 1) + "px";
 
+            if (newGame.timeCounter >= 11 && newGame.timeCounter <= 25) {
+                newGame.rewardsArray[i].style.top = (currentPositionReward + 2) + "px";
+            }
+
+            else if (newGame.timeCounter >= 26 && newGame.timeCounter <= 40) {
+                newGame.rewardsArray[i].style.top = (currentPositionReward + 3) + "px";
+            }
+
+            else if (newGame.timeCounter >= 41) {
+                newGame.rewardsArray[i].style.top = (currentPositionReward + 4) + "px";
+            }
+
             if (newGame.rewardsArray[i].offsetTop >= 495) {
                 newGame.rewardsArray[i].remove();
                 newGame.rewardsArray.splice(i, 1);
@@ -161,15 +188,13 @@ window.onload = function () {
             ) {
                 reward.remove();
                 newGame.score += 100;
-                console.log("HIT BY REWARD")
             }
-
 
         });
 
     }
 
-// Functions to create, move and check if player is hit by obstacles that take away all lives with one collision 
+    // Functions to create, move and check if player is hit by obstacles that take away all lives with one collision 
 
     function createObstacleZeroLives() {
         const obstacleZeroLives = document.createElement("div");
@@ -186,6 +211,14 @@ window.onload = function () {
             let currentPositionObstacleZeroLives = parseInt(newGame.obstaclesZeroLivesArray[i].style.top);
             newGame.obstaclesZeroLivesArray[i].style.top = (currentPositionObstacleZeroLives + 1) + "px";
 
+            if (newGame.timeCounter >= 26 && newGame.timeCounter <= 40) {
+                newGame.obstaclesZeroLivesArray[i].style.top = (currentPositionObstacleZeroLives + 2) + "px";
+            }
+
+            else if (newGame.timeCounter >= 41) {
+                newGame.obstaclesZeroLivesArray[i].style.top = (currentPositionObstacleZeroLives + 3) + "px";
+            }
+           
             if (newGame.obstaclesZeroLivesArray[i].offsetTop >= 495) {
                 newGame.obstaclesZeroLivesArray[i].remove();
                 newGame.obstaclesZeroLivesArray.splice(i, 1);
@@ -208,11 +241,58 @@ window.onload = function () {
                 obstacleZeroLives.remove();
                 newGame.lives = 0;
                 newGame.gameIsOver = true;
-                console.log("HIT BY OBSTACLE ZERO LIVES")
-
             }
 
-
         });
-}
+    }
+
+    // Functions to create, move and check if player is hit by rewards that add 1 to lives
+
+    function createRewardLife() {
+        const rewardLife = document.createElement("div");
+        gameScreen.appendChild(rewardLife);
+        rewardLife.className = "rewardLife";
+        rewardLife.style.top = 0;
+        rewardLife.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - rewardLife.offsetWidth)) + "px";
+        newGame.rewardsLifeArray.push(rewardLife);
+    }
+
+    function moveRewardLife() {
+        for (let i = 0; i < newGame.rewardsLifeArray.length; i++) {
+            let currentPositionRewardLife = parseInt(newGame.rewardsLifeArray[i].style.top);
+            newGame.rewardsLifeArray[i].style.top = (currentPositionRewardLife + 1) + "px";
+
+            if (newGame.timeCounter >= 26 && newGame.timeCounter <= 40) {
+                newGame.rewardsLifeArray[i].style.top = (currentPositionRewardLife + 2) + "px";
+            }
+
+            else if (newGame.timeCounter >= 41) {
+                newGame.rewardsLifeArray[i].style.top = (currentPositionRewardLife + 3) + "px";
+            }
+
+            if (newGame.rewardsLifeArray[i].offsetTop >= 495) {
+                newGame.rewardsLifeArray[i].remove();
+                newGame.rewardsLifeArray.splice(i, 1);
+            }
+        }
+    }
+
+
+    function hitByRewardLife() {
+        newGame.rewardsLifeArray.forEach((rewardLife) => {
+            const playerPosition = newPlayer.playerElement.getBoundingClientRect();
+            const rewardLifePosition = rewardLife.getBoundingClientRect();
+
+            if (
+                playerPosition.left < rewardLifePosition.left + rewardLifePosition.width &&
+                playerPosition.left + playerPosition.width > rewardLifePosition.left &&
+                playerPosition.top < rewardLifePosition.top + rewardLifePosition.height &&
+                playerPosition.top + playerPosition.height > rewardLifePosition.top
+            ) {
+                rewardLife.remove();
+                newGame.lives += 1;
+            }
+        });
+
+    }
 }

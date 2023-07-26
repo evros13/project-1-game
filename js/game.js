@@ -6,26 +6,31 @@ class Game {
         this.player = new Player(this.gameScreen);
         this.obstaclesArray = [];
         this.rewardsArray = [];
-        this.obstaclesZeroLivesArray = []
+        this.obstaclesZeroLivesArray = [];
+        this.rewardsLifeArray = [];
 
         this.gameIsOver = false;
-        this.score = 0; // Starting score will always be 0
-        this.lives = 5; // Starting number of lives will always be 5
+        this.score = 0; 
+        this.lives = 5; 
+        this.timeCounter = 0;
     }
 
 
-    checkGameIsOver() {
+    checkGameIsOver() { // The gameOverScreen will appear as soon as gameIsOver === true
         if (this.lives === 0) {
             this.gameIsOver = true;
 
             this.gameScreen.style.display = "none";
             this.gameOverScreen.style.display = "block";
+            const restartButton = document.getElementById("restartButton");
+            setTimeout(() => restartButton.style.display = "block", 2000);
 
         }
     }
 
 
-    updateLifeCounter() {
+
+    updateLifeCounter() { // Create life icons and check how many lives are left
         const livesCounter = document.getElementById("livesCounter")
         livesCounter.innerHTML = "";
         for (let i = 0; i < this.lives; i++) {
@@ -34,12 +39,7 @@ class Game {
             lifeImg.className = "lives"
         }
 
-
-        // We want to check how many lives we have this.lives
-
-        // we are going to render inside livescounter as many divs as lives
-
-
     }
+
 }
 
