@@ -28,7 +28,7 @@ body {
 }
 
 #gameScreen {
-    background-image: url("/images/notfinalbackground.jpg");
+    background-image: url("/images/background.jpg");
     height: 520px;
     width: 620px;
     margin: 20px 0;
@@ -38,7 +38,7 @@ body {
 }
 
 #gameOverScreen {
-    background-image: url("/images/notfinalgameover.jpg");
+    background-image: url("/images/gameover.gif");
     background-size: 100% 100%;
     height: 520px;
     width: 620px;
@@ -99,9 +99,9 @@ body {
 }
 
 .lives {
-    height: 20px;
-    width: 20px;
-    background-image: url("/images/notfinalliveiconedited.png");
+    height: 30px;
+    width: 30px;
+    background-image: url("/images/mugedited.png");
     background-size: cover;
     background-repeat: none;
     float: left;
@@ -111,9 +111,9 @@ body {
 
 
 #player {
-    background-image: url("/images/notfinalplayeredited.png");
-    height: 80px;
-    width: 60px;
+    background-image: url("/images/playereditedleft.png");
+    height: 70px;
+    width: 70px;
     background-size: cover;
     background-repeat: no-repeat;
     position: absolute;
@@ -124,17 +124,17 @@ body {
 }
 
 .obstacle {
-    background-image: url("/images/notfinalobstacle.png");
+    background-image: url("/images/obstacleedited.png");
     background-size: contain;
     background-repeat: no-repeat;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     position: absolute;
 }
 
 
 .reward {
-    background-image: url("/images/finalrewardedited.png");
+    background-image: url("/images/hollyedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 50px;
@@ -143,10 +143,10 @@ body {
 }
 
 .obstacleZeroLives {
-    background-image: url("/images/download.jpg");
+    background-image: url("/images/finalobstacleedited.png");
     background-size: contain;
     background-repeat: no-repeat;
-    height: 40px;
-    width: 40px;
+    height: 50px;
+    width: 50px;
     position: absolute;
 }

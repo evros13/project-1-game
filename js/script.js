@@ -77,7 +77,7 @@ window.onload = function () {
         gameScreen.appendChild(obstacle);
         obstacle.className = "obstacle";
         obstacle.style.top = 0;
-        obstacle.style.left = (Math.random() * newGame.gameScreen.offsetWidth) + "px";
+        obstacle.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - obstacle.offsetWidth)) + "px";
         newGame.obstaclesArray.push(obstacle);
     }
 
@@ -131,7 +131,7 @@ window.onload = function () {
         gameScreen.appendChild(reward);
         reward.className = "reward";
         reward.style.top = 0;
-        reward.style.left = (Math.random() * newGame.gameScreen.offsetWidth) + "px";
+        reward.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - reward.offsetWidth)) + "px";
         newGame.rewardsArray.push(reward);
     }
 
@@ -176,7 +176,7 @@ window.onload = function () {
         gameScreen.appendChild(obstacleZeroLives);
         obstacleZeroLives.className = "obstacleZeroLives";
         obstacleZeroLives.style.top = 0;
-        obstacleZeroLives.style.left = (Math.random() * newGame.gameScreen.offsetWidth) + "px";
+        obstacleZeroLives.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - obstacleZeroLives.offsetWidth)) + "px";
         newGame.obstaclesZeroLivesArray.push(obstacleZeroLives);
     }
 

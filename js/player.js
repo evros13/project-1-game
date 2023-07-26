@@ -22,12 +22,12 @@ class Player {
         if (key === "ArrowLeft") {
             
             this.playerPosition -= 10;
-            this.playerElement.style.backgroundImage = 'url("./images/notfinalplayeredited.png")'
+            this.playerElement.style.backgroundImage = 'url("./images/playereditedleft.png")'
             this.updatePosition();
         }
         else if (key === "ArrowRight") {
             this.playerPosition += 10;
-            this.playerElement.style.backgroundImage = 'url("./images/notfinalplayereditedright.png")'
+            this.playerElement.style.backgroundImage = 'url("./images/playeredited.png")'
             this.updatePosition();
 
         }
