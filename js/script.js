@@ -8,8 +8,7 @@ window.onload = function () {
 
     function startGame() {
 
-        gameLoop();
-        // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
+        gameLoop(); // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
         setTimeout(() => setInterval(createObstacle, 3000), 350);
         setTimeout(() => setInterval(createReward, 5000), 10000);
         setInterval(moveObstacle, 20);
@@ -20,10 +19,17 @@ window.onload = function () {
 
 
     const startButton = document.getElementById("startButton")
-    startButton.addEventListener("click", function () {
+    startButton.addEventListener("click", function () { // Game will start only after pressing the startButton
         startGame()
         startButton.style.display = "none";
         console.log("CLICKING")
+
+    })
+
+    const restartButton = document.getElementById("restartButton")
+    restartButton.addEventListener("click", function () { // Game will restart
+        window.location.reload();
+        console.log("RESTART BUTTON")
 
     })
 
