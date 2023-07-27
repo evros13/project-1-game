@@ -40,9 +40,6 @@ window.onload = function () {
         startButton.style.display = "none";
         player.style.display = "block";
         scoreCounter.style.display = "block";
-
-        let sheSaidAudio = document.getElementById("sheSaid");
-        sheSaidAudio.play();
     })
 
     const restartButton = document.getElementById("restartButton")
