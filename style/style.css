@@ -9,7 +9,7 @@ body {
 }
 
 #startButton {
-    background-image: url("/images/score-background.jpg");
+    background-image: url("./images/score-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border: 2px solid black;
@@ -25,14 +25,14 @@ body {
 }
 
 #startButton:hover {
-    background-image: url("/images/logo.png");
+    background-image: url("./images/logo.png");
     background-size: cover;
     background-repeat: no-repeat;
     color: hsla(0, 0%, 100%, 0)
 }
 
 #gameScreen {
-    background-image: url("/images/background.jpg");
+    background-image: url("./images/background.jpg");
     height: 520px;
     width: 620px;
     margin: 20px 0;
@@ -43,7 +43,7 @@ body {
 }
 
 #gameOverScreen {
-    background-image: url("/images/gameover.gif");
+    background-image: url("./images/gameover.gif");
     background-size: 100% 100%;
     height: 520px;
     width: 620px;
@@ -58,7 +58,7 @@ body {
 }
 
 #restartButton {
-    background-image: url("/images/score-background.jpg");
+    background-image: url("./images/score-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border: 2px solid black;
@@ -74,7 +74,7 @@ body {
 }
 
 #scoreCounter {
-    background-image: url("/images/score-background.jpg");
+    background-image: url("./images/score-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border: 2px solid black;
@@ -102,14 +102,14 @@ body {
 .lives {
     height: 30px;
     width: 30px;
-    background-image: url("/images/mugedited.png");
+    background-image: url("./images/mugedited.png");
     background-size: cover;
     background-repeat: none;
     float: left;
 }
 
 #player {
-    background-image: url("/images/playereditedleft.png");
+    background-image: url("./images/playereditedleft.png");
     height: 70px;
     width: 70px;
     background-size: cover;
@@ -122,7 +122,7 @@ body {
 }
 
 .obstacle {
-    background-image: url("/images/obstacleedited.png");
+    background-image: url("./images/obstacleedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 50px;
@@ -131,7 +131,7 @@ body {
 }
 
 .reward {
-    background-image: url("/images/hollyedited.png");
+    background-image: url("./images/hollyedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 50px;
@@ -140,7 +140,7 @@ body {
 }
 
 .obstacleZeroLives {
-    background-image: url("/images/finalobstacleedited.png");
+    background-image: url("./images/finalobstacleedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 50px;
@@ -149,7 +149,7 @@ body {
 }
 
 .rewardLife {
-    background-image: url("/images/michaelsantaedited.png");
+    background-image: url("./images/michaelsantaedited.png");
     background-size: contain;
     background-repeat: no-repeat;
     height: 55px;
