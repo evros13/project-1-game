@@ -156,3 +156,11 @@ body {
     width: 55px;
     position: absolute;
 }
+
+#legendBox {
+    position: absolute;
+    width: 300px;
+    font-size: 15px;
+    left: 10px;
+    text-justify: auto;
+}
