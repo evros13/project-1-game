@@ -13,7 +13,7 @@ The 2D game is set in one static screen. There is one player, two different obst
 
 Using the left and right arrow keys, the player will try to catch the rewards and avoid the obstacles. Those in turn will go faster as time goes by and after a certain amount of seconds, the amount of obstacles will also increase, resulting in more difficulty. 
 
-
+![](./images/screenshot.jpg)
 
 ## Structure
 Due to the time constraint of the project, the initial objectives *vs* the final result are not the same. At first, the intention of the game was to create a moving player and a moving obstacle, *y punto*; but as the MVP was achieved sooner than expected and the code started shaping up, regular visits to the backlog were made. This is why the structure might not look completely logical, but it is polished and completely readable. 
