@@ -4,34 +4,30 @@ window.onload = function () {
     const gameScreen = document.getElementById("gameScreen");
     const newGame = new Game()
     const newPlayer = newGame.player;
-    let timeCounter = 0;
-
 
     function startGame() {
-
         gameLoop(); // Use setTimeout and setInterval to create and move obstacles and rewards at regular intervals
 
         setTimeout(() => setInterval(createObstacle, 3000), 350);
         setTimeout(() => setInterval(createReward, 5000), 10000);
         setTimeout(() => setInterval(createObstacleZeroLives, 7000), 15000);
         setTimeout(() => setInterval(createRewardLife, 8000), 15000);
+        setTimeout(() => setInterval(createObstacle, 1000), 20000);
         setInterval(moveObstacle, 20);
         setInterval(moveReward, 20);
         setInterval(moveObstacleZeroLives, 20);
         setInterval(moveRewardLife, 20);
         scoreCounterFunction(newGame); // Call the scoreCounterFunction to update the game score
-        createTimeCounter();
-        
+        createTimeCounter();   
     }
 
-    function createTimeCounter() {
+    function createTimeCounter() { // Offset different speeds of obstacles&rewards
         setInterval(() => {
             newGame.timeCounter += 1;
         }, 1000);
     }
 
-    // Update the score counter at regular intervals
-    function scoreCounterFunction(newGame) {
+    function scoreCounterFunction(newGame) { // Update the score counter at regular intervals
         const scoreCounter = document.getElementById("scoreCounter");
         setInterval(() => {
             scoreCounter.innerHTML = newGame.score++;
@@ -39,7 +35,7 @@ window.onload = function () {
     }
 
     const startButton = document.getElementById("startButton")
-    startButton.addEventListener("click", function () { // Game will when pressing the startButton
+    startButton.addEventListener("click", function () { // Game starts when pressing the startButton
         startGame()
         startButton.style.display = "none";
         player.style.display = "block";
@@ -51,31 +47,21 @@ window.onload = function () {
         window.location.reload();
     })
 
-
-    document.addEventListener("keydown", function (event) { // Links the keyboard to the code
+    document.addEventListener("keydown", function (event) { // Links the keyboard input to the code
         newPlayer.playerMoves(event.key);
     });
 
-
-    function gameLoop() { // Function used to run the game loop
+    function gameLoop() { // All functions inside the loop will run continuously 
         frames++;
 
         newGame.updateLifeCounter();
-
         hitByObstacle();
-
         hitByObstacleZeroLives();
-
         hitByReward();
-
         hitByRewardLife();
-
-        requestAnimationFrame(gameLoop); // Request the next animation frame to continue the game loop
-
+        requestAnimationFrame(gameLoop);
         newGame.checkGameIsOver();
-
     }
-
 
     // Functions to create and move obstacles
 
@@ -87,7 +73,6 @@ window.onload = function () {
         obstacle.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - obstacle.offsetWidth)) + "px";
         newGame.obstaclesArray.push(obstacle);
     }
-
 
     function moveObstacle() {
         for (let i = 0; i < newGame.obstaclesArray.length; i++) {
@@ -106,15 +91,15 @@ window.onload = function () {
                 newGame.obstaclesArray[i].style.top = (currentPositionObstacle + 4) + "px";
             }
 
-            if (newGame.obstaclesArray[i].offsetTop >= 495) {
+            if (newGame.obstaclesArray[i].offsetTop >= 470) {
                 newGame.obstaclesArray[i].remove();
                 newGame.obstaclesArray.splice(i, 1);
             }
         }
     }
 
-
     // Functions to create and move obstacles and check if player collides with them
+
     function hitByObstacle() {
         newGame.obstaclesArray.forEach((obstacle) => {
             const playerPosition = newPlayer.playerElement.getBoundingClientRect();
@@ -133,10 +118,7 @@ window.onload = function () {
             if (newGame.lives === 0) {
                 newGame.gameIsOver = true;
             }
-
         });
-
-
     }
 
     // Functions to create and move rewards and check if player collides with them
@@ -167,13 +149,12 @@ window.onload = function () {
                 newGame.rewardsArray[i].style.top = (currentPositionReward + 4) + "px";
             }
 
-            if (newGame.rewardsArray[i].offsetTop >= 495) {
+            if (newGame.rewardsArray[i].offsetTop >= 470) {
                 newGame.rewardsArray[i].remove();
                 newGame.rewardsArray.splice(i, 1);
             }
         }
     }
-
 
     function hitByReward() {
         newGame.rewardsArray.forEach((reward) => {
@@ -184,14 +165,11 @@ window.onload = function () {
                 playerPosition.left < rewardPosition.left + rewardPosition.width &&
                 playerPosition.left + playerPosition.width > rewardPosition.left &&
                 playerPosition.top < rewardPosition.top + rewardPosition.height &&
-                playerPosition.top + playerPosition.height > rewardPosition.top
-            ) {
+                playerPosition.top + playerPosition.height > rewardPosition.top) {
                 reward.remove();
                 newGame.score += 100;
             }
-
         });
-
     }
 
     // Functions to create, move and check if player is hit by obstacles that take away all lives with one collision 
@@ -204,7 +182,6 @@ window.onload = function () {
         obstacleZeroLives.style.left = (Math.random() * (newGame.gameScreen.offsetWidth - obstacleZeroLives.offsetWidth)) + "px";
         newGame.obstaclesZeroLivesArray.push(obstacleZeroLives);
     }
-
 
     function moveObstacleZeroLives() {
         for (let i = 0; i < newGame.obstaclesZeroLivesArray.length; i++) {
@@ -219,13 +196,12 @@ window.onload = function () {
                 newGame.obstaclesZeroLivesArray[i].style.top = (currentPositionObstacleZeroLives + 3) + "px";
             }
            
-            if (newGame.obstaclesZeroLivesArray[i].offsetTop >= 495) {
+            if (newGame.obstaclesZeroLivesArray[i].offsetTop >= 470) {
                 newGame.obstaclesZeroLivesArray[i].remove();
                 newGame.obstaclesZeroLivesArray.splice(i, 1);
             }
         }
     }
-
 
     function hitByObstacleZeroLives() {
         newGame.obstaclesZeroLivesArray.forEach((obstacleZeroLives) => {
@@ -242,7 +218,6 @@ window.onload = function () {
                 newGame.lives = 0;
                 newGame.gameIsOver = true;
             }
-
         });
     }
 
@@ -270,13 +245,12 @@ window.onload = function () {
                 newGame.rewardsLifeArray[i].style.top = (currentPositionRewardLife + 3) + "px";
             }
 
-            if (newGame.rewardsLifeArray[i].offsetTop >= 495) {
+            if (newGame.rewardsLifeArray[i].offsetTop >= 470) {
                 newGame.rewardsLifeArray[i].remove();
                 newGame.rewardsLifeArray.splice(i, 1);
             }
         }
     }
-
 
     function hitByRewardLife() {
         newGame.rewardsLifeArray.forEach((rewardLife) => {
@@ -293,6 +267,5 @@ window.onload = function () {
                 newGame.lives += 1;
             }
         });
-
     }
 }

@@ -1,4 +1,4 @@
-console.log("Testing player.js")
+// Create player and the movement functions
 
 class Player {
     constructor(gameScreen) {
@@ -18,7 +18,7 @@ class Player {
         }
             this.updatePosition();
 
-
+            
         if (key === "ArrowLeft") {
             
             this.playerPosition -= 10;
@@ -29,12 +29,7 @@ class Player {
             this.playerPosition += 10;
             this.playerElement.style.backgroundImage = 'url("./images/playeredited.png")'
             this.updatePosition();
-
         }
-        
-        // facing here
-
-
      }
 
     updatePosition() {

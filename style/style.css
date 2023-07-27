@@ -6,9 +6,7 @@ body {
     align-items: center;
     font-family: 'Nunito', sans-serif;
     font-family: 'Victor Mono', monospace;
-
 }
-
 
 #startButton {
     background-image: url("/images/score-background.jpg");
@@ -33,7 +31,6 @@ body {
     color: hsla(0, 0%, 100%, 0)
 }
 
-
 #gameScreen {
     background-image: url("/images/background.jpg");
     height: 520px;
@@ -44,7 +41,6 @@ body {
     display: block;
     border-radius: 12px;
 }
-
 
 #gameOverScreen {
     background-image: url("/images/gameover.gif");
@@ -60,7 +56,6 @@ body {
     display: none;
     border-radius: 20px;
 }
-
 
 #restartButton {
     background-image: url("/images/score-background.jpg");
@@ -78,7 +73,6 @@ body {
     display: none;
 }
 
-
 #scoreCounter {
     background-image: url("/images/score-background.jpg");
     background-size: cover;
@@ -95,9 +89,7 @@ body {
     text-align: right;
     border-radius: 8px;
     display: none;
-
 }
-
 
 #livesCounter {
     height: 20px;
@@ -105,9 +97,7 @@ body {
     position: absolute;
     right: 10px;
     top: 55px;
-
 }
-
 
 .lives {
     height: 30px;
@@ -116,9 +106,7 @@ body {
     background-size: cover;
     background-repeat: none;
     float: left;
-    
 }
-
 
 #player {
     background-image: url("/images/playereditedleft.png");
@@ -131,9 +119,7 @@ body {
     left: 300px;
     transform: translateX(-50%);
     display: none;
-
 }
-
 
 .obstacle {
     background-image: url("/images/obstacleedited.png");
@@ -144,7 +130,6 @@ body {
     position: absolute;
 }
 
-
 .reward {
     background-image: url("/images/hollyedited.png");
     background-size: contain;
@@ -154,7 +139,6 @@ body {
     position: absolute;
 }
 
-
 .obstacleZeroLives {
     background-image: url("/images/finalobstacleedited.png");
     background-size: contain;
@@ -163,7 +147,6 @@ body {
     width: 50px;
     position: absolute;
 }
-
 
 .rewardLife {
     background-image: url("/images/michaelsantaedited.png");
