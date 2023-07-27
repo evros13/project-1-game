@@ -40,6 +40,9 @@ window.onload = function () {
         startButton.style.display = "none";
         player.style.display = "block";
         scoreCounter.style.display = "block";
+
+        let sheSaidAudio = document.getElementById("sheSaid");
+        sheSaidAudio.play();
     })
 
     const restartButton = document.getElementById("restartButton")
@@ -113,6 +116,8 @@ window.onload = function () {
             ) {
                 obstacle.remove();
                 newGame.lives -= 1;
+                let questionAudio = document.getElementById("questionAudio");
+                questionAudio.play();
             }
 
             if (newGame.lives === 0) {
@@ -168,6 +173,8 @@ window.onload = function () {
                 playerPosition.top + playerPosition.height > rewardPosition.top) {
                 reward.remove();
                 newGame.score += 100;
+                let hollyAudio = document.getElementById("hollyAudio");
+                hollyAudio.play();
             }
         });
     }
@@ -265,6 +272,8 @@ window.onload = function () {
             ) {
                 rewardLife.remove();
                 newGame.lives += 1;
+                let jesusAudio = document.getElementById("jesusAudio");
+                jesusAudio.play();
             }
         });
     }

@@ -8,29 +8,32 @@ class Player {
     }
 
     playerMoves(key) {
-        
-        if (this.playerElement.offsetLeft + this.playerElement.offsetWidth  > this.gameScreen.offsetWidth - this.gameScreen.style.width) {
-           this.playerPosition = this.gameScreen.offsetWidth - this.playerElement.offsetWidth
+
+        if (this.playerElement.offsetLeft + this.playerElement.offsetWidth > this.gameScreen.offsetWidth - this.gameScreen.style.width) {
+            this.playerPosition = this.gameScreen.offsetWidth - this.playerElement.offsetWidth
         }
-        
+
         else if (this.playerPosition < this.playerElement.offsetWidth) {
             this.playerPosition = this.playerElement.offsetWidth;
         }
-            this.updatePosition();
+        this.updatePosition();
 
-            
+        let parkourAudio = document.getElementById("parkourAudio")
+
         if (key === "ArrowLeft") {
-            
+
             this.playerPosition -= 10;
-            this.playerElement.style.backgroundImage = 'url("./images/playereditedleft.png")'
+            this.playerElement.style.backgroundImage = 'url("./images/playereditedleft.png")';
+            parkourAudio.play();
             this.updatePosition();
         }
         else if (key === "ArrowRight") {
             this.playerPosition += 10;
-            this.playerElement.style.backgroundImage = 'url("./images/playeredited.png")'
+            this.playerElement.style.backgroundImage = 'url("./images/playeredited.png")';
+            parkourAudio.play();
             this.updatePosition();
         }
-     }
+    }
 
     updatePosition() {
         this.playerElement.style.left = this.playerPosition + "px";

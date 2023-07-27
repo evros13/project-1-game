@@ -24,6 +24,8 @@ class Game {
 
             this.gameScreen.style.display = "none";
             this.gameOverScreen.style.display = "block";
+            let godNoAudio = document.getElementById("godNo");
+            godNoAudio.play();
             const restartButton = document.getElementById("restartButton");
             setTimeout(() => restartButton.style.display = "block", 2000);
         }
